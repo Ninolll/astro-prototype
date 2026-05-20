@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog"))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<html lang="en">
+  <head>
+    <title>Blog | Astro Blog Review</title>
+    <meta name="description" content="A prototype blog index for evaluating Astro." />
+  </head>
+  <body>
+    <main>
+      <a href="/">Home</a>
+      <h1>Blog</h1>
+
+      <ul>
+        {
+          posts.map((post) => (
+            <li>
+              <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+              <p>{post.data.description}</p>
+              <small>
+                {post.data.date.toLocaleDateString("en-AU")} · {post.data.author}
+              </small>
+              <p>
+                {post.data.tags.map((tag) => (
+                  <a href={`/tags/${tag}/`}>#{tag} </a>
+                ))}
+              </p>
+            </li>
+          ))
+        }
+      </ul>
+    </main>
+  </body>
+</html>

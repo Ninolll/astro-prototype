@@ -1,0 +1,27 @@
+---
+title: "Second Post"
+description: "An MDX post that embeds an Astro component."
+date: 2026-05-20
+author: "Nino"
+tags: ["astro", "mdx", "content"]
+draft: false
+---
+
+import Callout from "../../components/Callout.astro";
+
+# Second Post
+
+This is an MDX blog post.
+
+It tests whether Astro can render MDX and embed an Astro component inside content.
+
+<Callout title="MDX component test">
+  This content is rendered through a reusable Astro component inside an MDX
+  post.
+</Callout>
+
+## What this validates
+
+- MDX rendering
+- Astro component usage inside MDX
+- shared frontmatter schema with Markdown posts

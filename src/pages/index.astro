@@ -1,17 +1,46 @@
 ---
-
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <title>Astro Blog Review Prototype</title>
+    <meta
+      name="description"
+      content="A small prototype for evaluating whether Astro can replace Ghost's blogging/content functionality."
+    />
+  </head>
+  <body>
+    <main>
+      <h1>Astro Blog Review Prototype</h1>
+
+      <p>
+        This prototype evaluates whether Astro can replace Ghost's blogging and
+        content functionality for this website.
+      </p>
+
+      <nav>
+        <a href="/blog">Blog</a>
+        <a href="/about">About</a>
+      </nav>
+
+      <h2>Tested so far</h2>
+
+      <ul>
+        <li>Markdown posts</li>
+        <li>MDX posts with Astro components</li>
+        <li>Typed frontmatter via Content Collections</li>
+        <li>Blog index route</li>
+        <li>Dynamic blog post routes</li>
+        <li>Tag routes</li>
+        <li>Draft filtering</li>
+      </ul>
+
+      <h2>Current conclusion</h2>
+
+      <p>
+        Astro works well for file-based blogging and static content rendering.
+        It does not provide a built-in Ghost-like content admin by itself.
+      </p>
+    </main>
+  </body>
 </html>

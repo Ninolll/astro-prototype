@@ -1,0 +1,47 @@
+---
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = (await getCollection("blog")).filter((post) => !post.data.draft);
+  const tags = [...new Set(posts.flatMap((post) => post.data.tags))];
+
+  return tags.map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      posts: posts.filter((post) => post.data.tags.includes(tag)),
+    },
+  }));
+}
+
+const { tag, posts } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <title>#{tag} | Astro Blog Review</title>
+    <meta name="description" content={`Posts tagged ${tag}`} />
+  </head>
+  <body>
+    <main>
+      <a href="/blog">Back to blog</a>
+      <h1>#{tag}</h1>
+
+      <ul>
+        {
+          posts.map((post) => (
+            <li>
+              <a href={`/blog/${post.id.replace(/\.(md|mdx)$/, "")}/`}>
+                {post.data.title}
+              </a>
+              <p>{post.data.description}</p>
+              <small>
+                {post.data.date.toLocaleDateString("en-AU")} · {post.data.author}
+              </small>
+            </li>
+          ))
+        }
+      </ul>
+    </main>
+  </body>
+</html>
